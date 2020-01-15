@@ -1,0 +1,168 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        applicationId "io.github.sphrak.androidsample"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+configurations {
+    ktlint
+}
+
+dependencies {
+
+    def APPCOMPAT_VERSION = "1.1.0"
+    def ASSERTJ_VERSION = "3.14.0"
+    def COMMONS_CSV_VERSION = "1.7"
+    def CONSTRAINT_LAYOUT_VERSION = "1.1.3"
+    def CORE_KTX_VERSION = "1.1.0"
+    def CRASHLYTICS_VERSION = "2.10.1"
+    def DAGGER_VERSION = "2.25.2"
+    def FRAGMENT_KTX_VERSION = "1.1.0"
+    def JUNIT_VERSION = "4.13-rc-1"
+    def EITHER_VERSION = "1.0.1"
+    def KOTLIN_STDLIB_VERSION = "1.3.61"
+    def KTLINT_VERSION = "0.35.0"
+    def KTX_VERSION = "1.0.0"
+    def LEAK_CANARY = "1.6.3"
+    def MATERIAL_VERSION = "1.1.0-beta02"
+    def MOCKITO_CORE_VERSION = "3.1.0"
+    def MOSHI_VERSION = "1.9.2"
+    def NAVIGATION_VERSION = "2.2.0-rc04"
+    def OKHTTP_VERSION = "4.2.2"
+    def OKIO_VERSION = "2.4.1"
+    def OSMDROID_VERSION = "6.1.2"
+    def PERMISSIONS_DISPATCHER_VERSION = "4.6.0"
+    def PICASSO_VERSION = "2.71828"
+    def PREFERENCE_VERSION = "1.1.0"
+    def RETROFIT_VERSION = "2.6.2"
+    def ROOM_VERSION = "2.2.2"
+    def RXANDROID_VERSION = "2.1.1"
+    def RXBINDING_VERSION = "3.1.0"
+    def RXJAVA_VERSION = "2.2.14"
+    def RXKOTLIN_VERSION = "2.4.0"
+    def RXK_PREFS_VERSION = "1.2.5"
+    def THREETEN_ABP_VERSION = "1.2.1"
+    def THREETEN_BP_VERSION = "1.4.0"
+    def TIMBER_VERSION = "4.7.1"
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Android
+    implementation "androidx.appcompat:appcompat:${APPCOMPAT_VERSION}"
+    implementation "androidx.constraintlayout:constraintlayout:${CONSTRAINT_LAYOUT_VERSION}"
+    implementation "androidx.core:core-ktx:${CORE_KTX_VERSION}"
+    implementation "androidx.fragment:fragment-ktx:${FRAGMENT_KTX_VERSION}"
+    implementation "androidx.legacy:legacy-support-v4:${KTX_VERSION}"
+    implementation "androidx.navigation:navigation-fragment-ktx:${NAVIGATION_VERSION}"
+    implementation "androidx.navigation:navigation-ui-ktx:${NAVIGATION_VERSION}"
+    implementation "androidx.preference:preference:${PREFERENCE_VERSION}"
+    implementation "com.google.android.material:material:${MATERIAL_VERSION}"
+
+    // Reactive
+    implementation "com.jakewharton.rxbinding3:rxbinding-appcompat:${RXBINDING_VERSION}"
+    implementation "com.jakewharton.rxbinding3:rxbinding-material:${RXBINDING_VERSION}"
+    implementation "com.jakewharton.rxbinding3:rxbinding-recyclerview:${RXBINDING_VERSION}"
+    implementation "com.jakewharton.rxbinding3:rxbinding-swiperefreshlayout:${RXBINDING_VERSION}"
+    implementation "com.jakewharton.rxbinding3:rxbinding-viewpager:${RXBINDING_VERSION}"
+    implementation "io.reactivex.rxjava2:rxandroid:${RXANDROID_VERSION}"
+    implementation "io.reactivex.rxjava2:rxjava:${RXJAVA_VERSION}"
+    implementation "io.reactivex.rxjava2:rxkotlin:${RXKOTLIN_VERSION}"
+
+    // Network
+    implementation "com.squareup.okhttp3:logging-interceptor:${OKHTTP_VERSION}"
+    implementation "com.squareup.okhttp3:okhttp:${OKHTTP_VERSION}"
+    implementation "com.squareup.okio:okio:${OKIO_VERSION}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${RETROFIT_VERSION}"
+    implementation "com.squareup.retrofit2:converter-moshi:${RETROFIT_VERSION}"
+    implementation "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
+
+    // Database
+    implementation "androidx.room:room-runtime:${ROOM_VERSION}"
+    kapt "androidx.room:room-compiler:${ROOM_VERSION}"
+    implementation "androidx.room:room-ktx:${ROOM_VERSION}"
+    implementation "androidx.room:room-rxjava2:${ROOM_VERSION}"
+
+    // Serialization
+    implementation "com.squareup.moshi:moshi-adapters:${MOSHI_VERSION}"
+    implementation "com.squareup.moshi:moshi:${MOSHI_VERSION}"
+    implementation "com.squareup.retrofit2:converter-moshi:${RETROFIT_VERSION}"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:${MOSHI_VERSION}"
+
+    // Dependency Injection
+    implementation "com.google.dagger:dagger:${DAGGER_VERSION}"
+    kapt "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
+
+    // Miscellaneous
+    implementation "com.afollestad:rxkprefs:${RXK_PREFS_VERSION}"
+    implementation "com.squareup.picasso:picasso:${PICASSO_VERSION}"
+    implementation "org.apache.commons:commons-csv:${COMMONS_CSV_VERSION}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${KOTLIN_STDLIB_VERSION}"
+    implementation "org.osmdroid:osmdroid-android:${OSMDROID_VERSION}"
+    implementation "io.github.sphrak:either:${EITHER_VERSION}"
+    implementation "org.permissionsdispatcher:permissionsdispatcher:${PERMISSIONS_DISPATCHER_VERSION}"
+    kapt "org.permissionsdispatcher:permissionsdispatcher-processor:${PERMISSIONS_DISPATCHER_VERSION}"
+
+    // Datetime
+    implementation "com.jakewharton.threetenabp:threetenabp:${THREETEN_ABP_VERSION}"
+    testImplementation "org.threeten:threetenbp:${THREETEN_BP_VERSION}"
+
+    // Debugging, Testing, Linting, Analytics
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:${LEAK_CANARY}"
+    debugImplementation "com.squareup.leakcanary:leakcanary-support-fragment:${LEAK_CANARY}"
+
+    implementation "com.jakewharton.timber:timber:${TIMBER_VERSION}"
+    ktlint "com.pinterest:ktlint:${KTLINT_VERSION}"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${LEAK_CANARY}"
+    testImplementation "junit:junit:${JUNIT_VERSION}"
+    testImplementation "org.assertj:assertj-core:${ASSERTJ_VERSION}"
+    testImplementation "org.mockito:mockito-core:${MOCKITO_CORE_VERSION}"
+
+}
+tasks.register("ktlint", JavaExec) {
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "src/**/*.kt"
+    // to generate report in checkstyle format prepend following args:
+    // "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/ktlint.xml"
+    // see https://github.com/shyiko/ktlint#usage for more
+}
+
+check.dependsOn ktlint
+
+tasks.register("ktlintFormat", JavaExec) {
+    description = "Fix Kotlin code style deviations."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "-F", "src/**/*.kt"
+}
